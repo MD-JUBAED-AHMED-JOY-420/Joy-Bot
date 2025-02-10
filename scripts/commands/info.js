@@ -1,19 +1,18 @@
 module.exports.config = {
-    name: "info",
-    version: "1.0.0",
-    permission: 0,
-    credits: "Joy-Ahmed",
-    prefix: true,
-    description: "",
-    category: "prefix",
-    usages: "",
-    cooldowns: 5,
-    dependencies: 
-	{
-    "request":"",
-    "fs-extra":"",
-    "axios":""
-  }
+	name: "info",
+	version: "1.0.0",
+	permission: 0,
+	credits: "Joy-Ahmed",
+	description: "",
+	prefix: true, 
+	category: "Admin information", 
+	usages: ".admin",
+	cooldowns: 5,
+	dependencies: {
+		"request": "",
+		"fs-extra": "",
+		"axios": ""
+	}
 };
 module.exports.run = async function({ api,event,args,client,Users,Threads,__GLOBAL,Currencies }) {
 const axios = global.nodemodule["axios"];
@@ -25,9 +24,11 @@ const time = process.uptime(),
 		seconds = Math.floor(time % 60);
 const moment = require("moment-timezone");
 var juswa = moment.tz("Asia/Dhaka").format("『D/MM/YYYY』 【hh:mm:ss】");
-  
-var callback = () => api.sendMessage({body:`
---------------------------------------------
+var link =["https://i.imgur.com/Nyx7ViI.jpeg"];
+
+var callback = () => api.sendMessage({body:`𝐀𝐃𝐌𝐈𝐍 𝐀𝐍𝐃 𝐁𝐎𝐓 𝐈𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍
+
+ 𝐁𝐨𝐭 𝐍𝐚𝐦𝐞: ${global.config.BOTNAME}
 𝐍𝐚𝐦𝐞       : 𝐌𝐃 𝐉𝐔𝐁𝐀𝐄𝐃 𝐀𝐇𝐌𝐌𝐄𝐃 𝐉𝐎𝐘 
 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤 : 𝐏𝐫𝐢𝐧𝐜𝐞 𝐉𝐨𝐲 𝐀𝐡𝐦𝐞𝐝
 𝐑𝐞𝐥𝐢𝐠𝐢𝐨𝐧   : 𝐈𝐬𝐥𝐚𝐦
@@ -39,9 +40,19 @@ var callback = () => api.sendMessage({body:`
 𝐖𝐨𝐫𝐤        : 𝐒𝐭𝐮𝐝𝐞𝐧𝐭
 𝐆𝐦𝐚𝐢𝐥       : 𝐦𝐝𝐣𝐮𝐛𝐚𝐞𝐭𝐚𝐡𝐦𝐞𝐝124@𝐠𝐦𝐚𝐢𝐥.𝐜𝐨𝐦
 𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩: wa.me/+8801709045888
-𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦  : t.me/𝐦𝐝𝐣𝐮𝐛𝐚𝐞𝐭𝐚𝐡𝐦𝐞𝐝
-𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤 𝐋𝐢𝐧𝐤 : https://www.facebook.com/profile.php?id=100000121528628`,attachment: fs.createReadStream(__dirname + "/cache/1.png")}, event.threadID, () => 
-    fs.unlinkSync(__dirname + "/cache/1.png"));  
-      return request(encodeURI(`https://graph.facebook.com/100000121528628/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`)).pipe(
-fs.createWriteStream(__dirname+'/cache/1.png')).on('close',() => callback());
-   };
+𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦  : t.me/JOY_AHMED_88
+𝐅𝐜𝐞𝐛𝐨𝐨𝐤 𝐋𝐢𝐧𝐤 : https://www.facebook.com/profile.php?id=100000121528628
+
+𝐁𝐨𝐭 𝐏𝐫𝐞𝐟𝐢𝐱: ${global.config.PREFIX}
+
+𝐁𝐨𝐭 𝐎𝐰𝐧𝐞𝐫 : 『𝐏𝐫𝐢𝐧𝐜𝐞 𝐉𝐨𝐲 𝐀𝐡𝐦𝐞𝐝』 
+
+➟ 𝐔𝐩𝐭𝐢𝐦𝐞
+
+𝐓𝐨𝐝𝐚𝐲 𝐢𝐬 𝐓𝐢𝐦𝐞 : ${juswa} 
+
+𝐁𝐨𝐭 𝐢𝐬 𝐑𝐮𝐧𝐧𝐢𝐧𝐠 ${hours}:${minutes}:${seconds}.
+
+THANKS FOR USING ${global.config.BOTNAME} 『🙅🖤』`,attachment: fs.createReadStream(__dirname + "/cache/juswa.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/juswa.jpg")); 
+			return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/juswa.jpg")).on("close",() => callback());
+	 };
